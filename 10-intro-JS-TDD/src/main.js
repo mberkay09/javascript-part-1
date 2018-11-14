@@ -1,19 +1,27 @@
-const add = require('../src/main');
+module.exports = add;
+
+function add(a,b) {
+    if (isANumber(a) && isANumber(b)) {
+        return a + b;
+    } else if (isANumber(a)) {
+        return a;
+    } else if (isANumber(b)) {
+        return b;
+    } else {
+        return 0;
+    }
+}
 
 /*
-   TODO: Make me pass! (step 1)
+   Utilities functions (just for helping)
  */
-test('should return 0 when empty string provided', () => {
-    expect(add('')).toBe(0);
-});
 
+// OBS: this is quite a ugly helper method: DELETE ME!
+function isUndefined(x) {
+    return x === undefined;
+}
 
-test('should return sum when to integers are provided', () => {
-    expect(add(4, 5)).toBe(9);
-});
-
-
-
-test('should return the value of the only numeric parameter when the other parameter is not a number', () => {
-    expect(add("yo!", 6)).toBe(6);
-});
+// Tips: DON'T use Number.NaN
+function isANumber(x) {
+    return typeof(x) === 'number';
+}
